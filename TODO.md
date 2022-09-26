@@ -7,3 +7,5 @@
 - [ ] integrate different algorithms like the rollup node resolve, enhanced-resolve && vite resolve
 - [ ] typescript type resolution for different cases and typescript versions
 - [ ] show how deno does it
+- [ ] use mobile-friendly editor for smartphone
+- [ ] embed state in sharable urls
