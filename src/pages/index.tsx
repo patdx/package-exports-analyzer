@@ -4,6 +4,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { FC, useEffect, useState } from 'react';
 import { resolve } from 'resolve.exports';
+import * as E from 'fp-ts/Either';
+import { pipe } from 'fp-ts/function';
 
 // Useful links
 // https://www.npmjs.com/package/exports-test
@@ -113,11 +115,21 @@ const TestCaseResult: FC<{
 }> = ({ testCase, packageJson }) => {
   const isRequire = testCase.type === 'require';
 
-  const result = resolve(packageJson, testCase.path ?? '.', {
-    require: isRequire,
-    conditions: testCase.conditions,
-    browser: testCase.browser,
-  });
+  const result = pipe(
+    E.tryCatch(
+      () =>
+        resolve(packageJson, testCase.path ?? '.', {
+          require: isRequire,
+          conditions: testCase.conditions,
+          browser: testCase.browser,
+        }),
+      (err) => err as Error
+    ),
+    E.match(
+      (err) => `Error: ${err.message}`,
+      (result) => result
+    )
+  );
 
   const importFnName = isRequire ? 'require' : 'import';
 
