@@ -138,6 +138,8 @@ const TestCaseResult: FC<{
     ...(testCase.conditions ?? []),
   ]);
 
+  allConditions.add(importFnName);
+
   if (testCase.browser) {
     allConditions.add('browser');
   } else {
