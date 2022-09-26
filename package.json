@@ -11,8 +11,8 @@
     "fp-ts": "2.12.3",
     "monaco-editor": "0.34.0",
     "next": "latest",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "resolve.exports": "1.1.0"
   },
   "devDependencies": {
