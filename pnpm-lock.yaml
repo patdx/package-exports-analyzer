@@ -16,7 +16,7 @@ specifiers:
   react-dom: 18.1.0
   resolve.exports: 1.1.0
   tailwindcss: 3.1.8
-  typescript: 4.7.2
+  typescript: 4.8.3
 
 dependencies:
   '@monaco-editor/react': 4.4.6_ee5jxx2ry7zb4vhvvrot7krjj4
@@ -36,7 +36,7 @@ devDependencies:
   postcss: 8.4.16
   prettier: 2.7.1
   tailwindcss: 3.1.8_postcss@8.4.16
-  typescript: 4.7.2
+  typescript: 4.8.3
 
 packages:
 
@@ -856,8 +856,8 @@ packages:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
     dev: false
 
-  /typescript/4.7.2:
-    resolution: {integrity: sha512-Mamb1iX2FDUpcTRzltPxgWMKy3fhg0TN378ylbktPGPK/99KbDtMQ4W1hwgsbPAsG3a0xKa1vmw4VKZQbkvz5A==}
+  /typescript/4.8.3:
+    resolution: {integrity: sha512-goMHfm00nWPa8UvR/CPSvykqf6dVV8x/dp0c5mFTMTIu0u0FlGWRioyy7Nn0PGAdHxpJZnuO/ut+PpQ8UiHAig==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
