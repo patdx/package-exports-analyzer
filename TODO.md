@@ -9,3 +9,4 @@
 - [ ] show how deno does it
 - [ ] use mobile-friendly editor for smartphone
 - [ ] embed state in sharable urls
+- [ ] set up autocomplete for package json (using json schema in monaco?)
