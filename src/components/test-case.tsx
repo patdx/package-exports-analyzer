@@ -56,7 +56,7 @@ export const TestCase: FC<{
   const importStatement = `${importFnName}(${JSON.stringify(testCase.path)}`;
 
   return (
-    <div className="border p-1 rounded group">
+    <div className="group rounded border p-1">
       <div className="flex items-center">
         {importStatement}
         {testCase.conditions ? (

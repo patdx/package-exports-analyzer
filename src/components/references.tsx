@@ -29,15 +29,12 @@ const Reference: FC<IReference> = (props) => {
 
 export const References: FC = () => {
   return (
-    <>
-      <h4>References</h4>
-      <ul className="list-disc list-inside">
-        {REFERENCES.map((reference, index) => (
-          <li key={index}>
-            <Reference {...reference} />
-          </li>
-        ))}
-      </ul>
-    </>
+    <ul className="list-inside list-disc">
+      {REFERENCES.map((reference, index) => (
+        <li key={index}>
+          <Reference {...reference} />
+        </li>
+      ))}
+    </ul>
   );
 };

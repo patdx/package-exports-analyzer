@@ -1,11 +1,9 @@
-export interface IPackageJson {
-  exports?: Record<string, any>;
-}
-
 // type Export = ExportsObject | ExportsList | ExportsList
 // type ExportsObject = Record<string, Export>;
 // type ExportsList = Array<Export>;
 // type ExportPath = string;
+
+import { IPackageJson } from './types';
 
 export interface PackageJsonInfo {
   conditionNames: string[];
