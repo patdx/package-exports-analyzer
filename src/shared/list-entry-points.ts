@@ -4,28 +4,70 @@
 // type ExportPath = string;
 
 import { IPackageJson } from './types';
+import pick from 'lodash/pick';
 
 export type EntryPoints = Map<string, string>;
+
+export type EntryPointResult = {
+  exports: Record<string, string>;
+} & Record<string, any>;
 
 export const listEntryPoints = (
   pkg?: IPackageJson,
   conditions?: Set<string>
-): EntryPoints => {
+): EntryPointResult => {
   const entryPoints: EntryPoints = new Map();
 
-  if (!pkg || !pkg.exports) {
-    return entryPoints;
+  if (!pkg) {
+    return {
+      exports: {},
+    };
   }
 
   const { exports } = pkg;
 
-  traverseExports(exports, {
-    conditions,
-    entryPoints,
-    path: '.',
-  });
+  if (exports) {
+    traverseExports(exports, {
+      conditions,
+      entryPoints,
+      path: '.',
+    });
+  }
 
-  return entryPoints;
+  const result: EntryPointResult = {
+    exports: Object.fromEntries(entryPoints),
+  };
+
+  // TODO: how to show old conditions properly
+  // it is not really a function of the export conditions but
+  // that is a convenient toggle
+  if (conditions?.has('types')) {
+    Object.assign(result, pick(pkg, ['types', 'typings', 'typesVersions']));
+  }
+
+  if (conditions?.has('node')) {
+    Object.assign(result, pick(pkg, ['main']));
+  }
+
+  if (conditions?.has('module')) {
+    Object.assign(result, pick(pkg, ['module']));
+  }
+
+  if (conditions?.has('browser')) {
+    Object.assign(result, pick(pkg, ['browser']));
+  }
+
+  if (conditions?.has('deno')) {
+    // TODO: this seems to be for separate publishing, maybe not necessary
+    Object.assign(result, pick(pkg, ['denoify']));
+  }
+
+  if (conditions?.has('react-native')) {
+    // not sure how react-native works but seems to be present in some packages
+    Object.assign(result, pick(pkg, ['react-native']));
+  }
+
+  return result;
 };
 
 interface TraverseContext {
@@ -64,6 +106,16 @@ const traverseExports = (
       } else {
         // is a condition
         if (context.conditions?.has(key)) {
+          traverseExports(value, context);
+        } else if (
+          context.conditions?.has('types') &&
+          key.startsWith('types@')
+        ) {
+          // versioned type key, like {exports: {'./': {'types@4.7.0-beta': './lib/index.d.ts'}}}
+          // https://github.com/microsoft/TypeScript/issues/48369#issuecomment-1110920451
+          // TODO: basically this logic would just pick the first matching types version
+          // though I think it would be better to just leave it as an unresolved object
+          // unless a typescript version is selected
           traverseExports(value, context);
         }
       }

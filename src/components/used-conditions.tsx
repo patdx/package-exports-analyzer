@@ -20,11 +20,12 @@ const KNOWN_CONDITONS_SETS: string[][] = [
   ['production', 'development'],
   ['module'],
   ['worker', 'electron', 'worklet'],
-  ['default'],
+  ['react-native'],
   ['types'],
   ['deno'],
   ['solid'],
   // ['node-addons'],
+  ['default'],
 ];
 
 const PRESETS: Record<
@@ -38,13 +39,13 @@ const PRESETS: Record<
     title: 'Webpack, etc',
     conditions: ['import', 'browser', 'module', 'default'],
   },
-  'node-classic': {
-    title: 'Node Classic',
-    conditions: ['node', 'require', 'default'],
-  },
-  'node-es': {
-    title: 'Node ES Modules',
+  'node-esm': {
+    title: 'Node ESM',
     conditions: ['node', 'import', 'default'],
+  },
+  'node-classic': {
+    title: 'Node CJS',
+    conditions: ['node', 'require', 'default'],
   },
   deno: {
     // https://github.com/denoland/deno/blob/716005a0d4afd1042fa75d8bdc32fd13e9ebe95f/ext/node/resolution.rs
@@ -55,6 +56,16 @@ const PRESETS: Record<
     // https://github.com/cloudflare/wrangler2/issues/84
     title: 'Cloudflare Workers',
     conditions: ['import', 'worker', 'browser', 'default'],
+  },
+  'typescript-esm': {
+    // https://github.com/microsoft/TypeScript/blob/63791f52d4e7a3bf461b974e94abd8cbb6b546c5/src/compiler/moduleNameResolver.ts#L370
+    title: 'Typescript ESM',
+    conditions: ['node', 'import', 'types', 'default'],
+  },
+  'typescript-cjs': {
+    // https://github.com/microsoft/TypeScript/blob/63791f52d4e7a3bf461b974e94abd8cbb6b546c5/src/compiler/moduleNameResolver.ts#L370
+    title: 'Typescript CJS',
+    conditions: ['node', 'require', 'types', 'default'],
   },
   // Other:
   // esm.sh target for deno https://github.com/ije/esm.sh/blob/049c2ba89ad59dfcdddbc5d31c9900b562a11dc0/server/nodejs.go#L438
@@ -166,7 +177,21 @@ export const UsedConditions: FC<{
 
   return (
     <>
-      <Card title="Selected conditions">
+      <Card title="Selected conditions" className="flex flex-col gap-2">
+        <div className="rounded bg-yellow-100 p-1">
+          <div>Presets</div>
+          <div className="flex flex-wrap gap-2">
+            {Object.entries(PRESETS).map(([key, value]) => (
+              <Button
+                key={key}
+                onClick={() => selected.applyPreset(key)}
+                className={selected.preset === key ? 'font-bold' : undefined}
+              >
+                {value.title}
+              </Button>
+            ))}
+          </div>
+        </div>
         <div className="flex items-center gap-4">
           {groups.map((group) => (
             <div className="flex flex-none flex-col items-center gap-1">
@@ -188,20 +213,6 @@ export const UsedConditions: FC<{
               ))}
             </div>
           ))}
-          <div className="flex-1 rounded bg-yellow-100 p-1">
-            <div>Presets</div>
-            <div className="flex flex-wrap gap-2">
-              {Object.entries(PRESETS).map(([key, value]) => (
-                <Button
-                  key={key}
-                  onClick={() => selected.applyPreset(key)}
-                  className={selected.preset === key ? 'font-bold' : undefined}
-                >
-                  {value.title}
-                </Button>
-              ))}
-            </div>
-          </div>
         </div>
 
         {warnings.length >= 1 && (
@@ -215,9 +226,7 @@ export const UsedConditions: FC<{
         )}
       </Card>
       <Card title="Available exports for selected conditions">
-        <pre>
-          {JSON.stringify(Object.fromEntries(entryPoints), undefined, 2)}
-        </pre>
+        <pre>{JSON.stringify(entryPoints, undefined, 2)}</pre>
       </Card>
     </>
   );

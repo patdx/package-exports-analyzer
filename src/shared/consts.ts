@@ -6,6 +6,7 @@ export const INITIAL_VALUE_JSON = {
   main: 'dist/require.js',
   exports: {
     '.': {
+      'types@4.7.0-beta': './lib/index.d.ts',
       import: './dist/module.mjs',
       require: './dist/require.js',
     },
@@ -17,6 +18,11 @@ export const INITIAL_VALUE_JSON = {
       import: './lite/module.mjs',
       require: './lite/require.js',
     },
+  },
+  types: './index.d.ts',
+  typesVersions: {
+    '>=3.2': { '*': ['ts3.2/*'] },
+    '>=3.1': { '*': ['ts3.1/*'] },
   },
 };
 

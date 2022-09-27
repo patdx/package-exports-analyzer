@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 import { Button } from '../components/button';
 import { Card } from '../components/card';
+import { Dependencies } from '../components/dependencies';
 import { References } from '../components/references';
 import { TestCase } from '../components/test-case';
 import { UsedConditions } from '../components/used-conditions';
@@ -104,6 +105,9 @@ const Home: NextPage = () => {
             pkg={parsed}
           />
         </Card>
+
+        <Dependencies pkg={parsed} />
+
         {1 > 2 && (
           <Card title="Test cases">
             <div className="flex flex-col gap-1 p-1">
