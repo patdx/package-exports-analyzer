@@ -56,6 +56,8 @@ const PRESETS: Record<
     title: 'Cloudflare Workers',
     conditions: ['import', 'worker', 'browser', 'default'],
   },
+  // Other:
+  // esm.sh target for deno https://github.com/ije/esm.sh/blob/049c2ba89ad59dfcdddbc5d31c9900b562a11dc0/server/nodejs.go#L438
 };
 
 const useSelectedConditions = create<SelectedConditions>((set, get) => ({
@@ -81,6 +83,7 @@ const useSelectedConditions = create<SelectedConditions>((set, get) => ({
     }
     set({
       selected,
+      preset: undefined,
     });
   },
   applyPreset: (name) => {
@@ -88,6 +91,7 @@ const useSelectedConditions = create<SelectedConditions>((set, get) => ({
     if (!preset) return;
     set({
       selected: new Set(preset.conditions),
+      preset: name,
     });
   },
 }));
@@ -188,7 +192,11 @@ export const UsedConditions: FC<{
             <div>Presets</div>
             <div className="flex flex-wrap gap-2">
               {Object.entries(PRESETS).map(([key, value]) => (
-                <Button key={key} onClick={() => selected.applyPreset(key)}>
+                <Button
+                  key={key}
+                  onClick={() => selected.applyPreset(key)}
+                  className={selected.preset === key ? 'font-bold' : undefined}
+                >
                   {value.title}
                 </Button>
               ))}
