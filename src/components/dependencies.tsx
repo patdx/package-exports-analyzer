@@ -14,16 +14,31 @@ export const Dependencies: FC<{
   return (
     <Card title="Dependencies">
       <ul className="list-inside list-disc">
-        {Object.entries(all).map(([packageName, version]) => {
-          const specifier = `${packageName}@${version}`;
-
-          return (
-            <li>
-              <Link href={`/${specifier}`}>{specifier}</Link>
-            </li>
-          );
-        })}
+        <DependenciesList list={pkg?.dependencies} />
+        <DependenciesList list={pkg?.devDependencies} isDev={true} />
       </ul>
     </Card>
+  );
+};
+
+const DependenciesList: FC<{
+  list?: Record<string, string>;
+  isDev?: boolean;
+}> = (props) => {
+  return (
+    <>
+      {Object.entries(props.list ?? {}).map(([packageName, version]) => {
+        let specifier = `${packageName}@${version}`;
+        if (props.isDev) {
+          specifier += ' (devDependencies)';
+        }
+
+        return (
+          <li>
+            <Link href={`/${specifier}`}>{specifier}</Link>
+          </li>
+        );
+      })}
+    </>
   );
 };

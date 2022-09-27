@@ -26,7 +26,7 @@ import {
 const Home: NextPage = () => {
   const [text, setText] = useState(INITIAL_VALUE_TEXT);
 
-  const [parsed, setParsed] = useState(INITIAL_VALUE_JSON);
+  const [pkg, setPkg] = useState(INITIAL_VALUE_JSON);
 
   const router = useRouter();
 
@@ -47,13 +47,13 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     try {
-      setParsed(dirtyJson.parse(text));
+      setPkg(dirtyJson.parse(text));
     } catch (err) {
       // console.warn(err);
     }
   }, [text]);
 
-  const analysis = useMemo(() => analyzePackageJson(parsed), [parsed]);
+  const analysis = useMemo(() => analyzePackageJson(pkg), [pkg]);
 
   return (
     <div className="grid h-screen grid-cols-2">
@@ -80,7 +80,7 @@ const Home: NextPage = () => {
           >
             Load package.json from NPM...
           </Button>
-          <Button onClick={() => setText(JSON.stringify(parsed, undefined, 2))}>
+          <Button onClick={() => setText(JSON.stringify(pkg, undefined, 2))}>
             Format JSON
           </Button>
         </div>
@@ -99,24 +99,18 @@ const Home: NextPage = () => {
       </div>
 
       <div className="flex h-screen flex-1 flex-col overflow-y-auto">
-        <Card title="Used export condition names">
-          <UsedConditions
-            conditionNames={analysis.conditionNames}
-            pkg={parsed}
-          />
-        </Card>
+        <UsedConditions conditionNames={analysis.conditionNames} pkg={pkg} />
 
-        <Dependencies pkg={parsed} />
+        <Dependencies pkg={pkg} />
+
+        {/* show a window that has all the sub package jsons listed and selectable*/}
+        {/* using unpkg.com/react/?meta */}
 
         {1 > 2 && (
           <Card title="Test cases">
             <div className="flex flex-col gap-1 p-1">
               {INITIAL_TEST_CASES.map((testCase, index) => (
-                <TestCase
-                  key={index}
-                  packageJson={parsed}
-                  testCase={testCase}
-                />
+                <TestCase key={index} pkg={pkg} testCase={testCase} />
               ))}
             </div>
           </Card>

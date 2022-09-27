@@ -18,14 +18,14 @@ export interface ITestCase {
 
 export const TestCase: FC<{
   testCase: ITestCase;
-  packageJson: unknown;
-}> = ({ testCase, packageJson }) => {
+  pkg: unknown;
+}> = ({ testCase, pkg }) => {
   const isRequire = testCase.type === 'require';
 
   const result = pipe(
     E.tryCatch(
       () =>
-        resolve(packageJson, testCase.path ?? '.', {
+        resolve(pkg, testCase.path ?? '.', {
           require: isRequire,
           conditions: testCase.conditions,
           browser: testCase.browser,
