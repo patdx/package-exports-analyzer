@@ -43,7 +43,7 @@ const traverseExports = (
     }
   } else {
     // is object
-    for (const [key, value] of Object.entries(obj)) {
+    for (const [key, value] of Object.entries(obj ?? {})) {
       if (!key.startsWith('.')) {
         if (key.startsWith('types@')) {
           // special versioned typescript resolver
