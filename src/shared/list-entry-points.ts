@@ -6,65 +6,79 @@
 import { IPackageJson } from './types';
 import pick from 'lodash/pick';
 
-export type EntryPoints = Map<string, string>;
+export type ResolvedExportMap = Map<string, string>;
 
 export type EntryPointResult = {
-  exports: Record<string, string>;
+  exports?: Record<string, string>;
 } & Record<string, any>;
 
 export const listEntryPoints = (
   pkg?: IPackageJson,
   conditions?: Set<string>
 ): EntryPointResult => {
-  const entryPoints: EntryPoints = new Map();
-
   if (!pkg) {
     return {
       exports: {},
     };
   }
 
+  const result: EntryPointResult = {};
+
   const { exports } = pkg;
 
   if (exports) {
+    const resolvedExports: ResolvedExportMap = new Map();
+
     traverseExports(exports, {
       conditions,
-      entryPoints,
+      resolvedExports,
       path: '.',
     });
+
+    // because the "exports" map almost always takes priority,
+    // as long as the key existed in the original package json,
+    // definitely show it here, even if it is empty due
+    // to not having any matches for the given conditions
+    result.exports = Object.fromEntries(resolvedExports);
   }
 
-  const result: EntryPointResult = {
-    exports: Object.fromEntries(entryPoints),
-  };
+  if (!exports) {
+    // In general, other conditions in package.json seem to be intended to
+    // only be resolved when the `exports` map is not available.
+    // This is documented very clearly for Typescript
 
-  // TODO: how to show old conditions properly
-  // it is not really a function of the export conditions but
-  // that is a convenient toggle
-  if (conditions?.has('types')) {
-    Object.assign(result, pick(pkg, ['types', 'typings', 'typesVersions']));
-  }
+    // Also, I'm not really sure how to decide when to show these or not.
+    // Right now I am checking if it is in the export condition list, but
+    // really it is a higher level "target" that should determine the export
+    // conditions and other properties that may be referenced.
+    if (conditions?.has('types')) {
+      Object.assign(result, pick(pkg, ['types', 'typings', 'typesVersions']));
+    }
 
-  if (conditions?.has('node')) {
-    Object.assign(result, pick(pkg, ['main']));
-  }
+    if (conditions?.has('node')) {
+      Object.assign(result, pick(pkg, ['main']));
+    }
 
-  if (conditions?.has('module')) {
-    Object.assign(result, pick(pkg, ['module']));
+    if (conditions?.has('module')) {
+      Object.assign(result, pick(pkg, ['module']));
+    }
+
+    if (conditions?.has('deno')) {
+      // TODO: this seems to be for separate publishing, maybe not necessary
+      Object.assign(result, pick(pkg, ['denoify']));
+    }
+
+    if (conditions?.has('react-native')) {
+      // not sure how react-native works but seems to be present in some packages
+      Object.assign(result, pick(pkg, ['react-native']));
+    }
   }
 
   if (conditions?.has('browser')) {
+    // browser is special property that may sometimes supersede exports map (?)
+    // depending on the implementation. will show always instead of just when no "exports"
+    // map is present.
     Object.assign(result, pick(pkg, ['browser']));
-  }
-
-  if (conditions?.has('deno')) {
-    // TODO: this seems to be for separate publishing, maybe not necessary
-    Object.assign(result, pick(pkg, ['denoify']));
-  }
-
-  if (conditions?.has('react-native')) {
-    // not sure how react-native works but seems to be present in some packages
-    Object.assign(result, pick(pkg, ['react-native']));
   }
 
   return result;
@@ -72,7 +86,7 @@ export const listEntryPoints = (
 
 interface TraverseContext {
   conditions?: Set<string>;
-  entryPoints: EntryPoints;
+  resolvedExports: ResolvedExportMap;
   path: string;
 }
 
@@ -81,11 +95,11 @@ const traverseExports = (
   context: TraverseContext
 ): void => {
   if (typeof obj === 'string') {
-    if (context.entryPoints.has(context.path)) {
+    if (context.resolvedExports.has(context.path)) {
       console.log(`path ${context.path} already resolved, skipping ${obj}`);
       return;
     }
-    context.entryPoints.set(context.path, obj);
+    context.resolvedExports.set(context.path, obj);
   } else if (Array.isArray(obj)) {
     // for now, just use the first one
     // since we do not actually check the existing files

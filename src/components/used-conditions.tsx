@@ -56,6 +56,12 @@ const PRESETS: Record<
     // https://github.com/cloudflare/wrangler2/issues/84
     title: 'Cloudflare Workers',
     conditions: ['import', 'worker', 'browser', 'default'],
+    // Note: while a "module" condition also exists, it does not seem to be set by esbuild
+    // automatically which is used in Wrangler2:
+    // https://github.com/evanw/esbuild/blob/3e2374cb011a47482b415f84716afa13ea88f3ce/internal/resolver/resolver.go
+    // however, esbuild may fall back to packageJson.module or packageJson.browser when
+    // the packageJson.exports does not exist. So technically need some way to allow resolution
+    // via packageJson.module without enabling export condition "module".
   },
   'typescript-esm': {
     // https://github.com/microsoft/TypeScript/blob/63791f52d4e7a3bf461b974e94abd8cbb6b546c5/src/compiler/moduleNameResolver.ts#L370
