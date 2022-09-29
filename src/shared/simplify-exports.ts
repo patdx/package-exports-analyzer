@@ -9,12 +9,19 @@ import { IPackageJsonExports, IPackageJsonExportsNode } from './types';
 const smplfy = (text: string) => {
   try {
     return simplify(text, [
+      ...simplify.rules,
       'not(n1 and n2) -> not(n1) or not(n2)',
       'not(n1 or n2) -> not(n1) and not(n2)',
       'not(not(n1)) -> n1',
       'n1 and (n2 and n3) -> (n1 and n2) and n3',
       'n1 or (n2 or n3) -> n1 or n2 or n3',
       '(n1 and n2) or (n1 and n3) -> (n1) and (n2 or n3)',
+      '(n1 and n2) or (not n1 and n2) -> n2',
+
+      // applies here: (development and import and types) or (not(development) and import and types)
+      // but it should be possible to do this in a generic way, right? to automatically
+      // find the related part
+      '(n1 and n2 and n3) or (not n1 and n2 and n3) -> n2 and n3'
     ]).toString();
   } catch (err) {
     return String(err);
@@ -63,7 +70,9 @@ export const simplifyExports = (exports?: IPackageJsonExports) => {
   }
 
   for (const match of output.values()) {
-    match.combined = match.rules.map((expr) => `(${expr})`).join(' or ');
+    match.combined = match.rules
+      .map((expr) => `(${expr})`.replace(/-/g, '_'))
+      .join(' or ');
     match.simplified = smplfy(match.combined);
   }
 

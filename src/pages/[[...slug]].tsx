@@ -120,7 +120,7 @@ const Home: NextPage = () => {
             </Card>
           )}
 
-          {1 > 2 && <SimplifiedExports />}
+          {1 > 0 && <SimplifiedExports />}
 
           {/* <pre className="text-gray-500 text-sm">
           {JSON.stringify(parsed, undefined, 2)}
