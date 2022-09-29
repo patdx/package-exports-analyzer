@@ -101,7 +101,7 @@ export const usePackageInfo = (packageQuery?: string) => {
     [
       `https://unpkg.com/${parsed?.nameWithVersion}${parsed?.path}/package.json`,
     ],
-    fetchJson,
+    fetchJson as QueryFunction<IPackageJson>,
     {
       enabled: Boolean(parsed?.path),
     }

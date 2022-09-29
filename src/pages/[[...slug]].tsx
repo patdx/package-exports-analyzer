@@ -9,6 +9,7 @@ import { Card } from '../components/card';
 import { Dependencies } from '../components/dependencies';
 import { PackageFileList } from '../components/package-file-list';
 import { References } from '../components/references';
+import { SimplifiedExports } from '../components/simplified';
 import { TestCase } from '../components/test-case';
 import { UsedConditions } from '../components/used-conditions';
 import { analyzePackageJson } from '../shared/analyze-package-json';
@@ -118,6 +119,8 @@ const Home: NextPage = () => {
               </div>
             </Card>
           )}
+
+          {1 > 2 && <SimplifiedExports />}
 
           {/* <pre className="text-gray-500 text-sm">
           {JSON.stringify(parsed, undefined, 2)}

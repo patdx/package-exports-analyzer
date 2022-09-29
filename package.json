@@ -12,6 +12,7 @@
     "dirty-json": "0.9.2",
     "fp-ts": "2.12.3",
     "lodash": "4.17.21",
+    "mathjs": "^11.2.1",
     "monaco-editor": "0.34.0",
     "next": "latest",
     "react": "18.2.0",
