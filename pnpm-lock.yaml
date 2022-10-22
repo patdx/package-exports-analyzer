@@ -12,7 +12,7 @@ specifiers:
   dirty-json: 0.9.2
   fp-ts: 2.13.1
   lodash: 4.17.21
-  mathjs: 11.3.0
+  mathjs: 11.3.1
   monaco-editor: 0.34.1
   next: latest
   postcss: 8.4.18
@@ -32,7 +32,7 @@ dependencies:
   dirty-json: 0.9.2
   fp-ts: 2.13.1
   lodash: 4.17.21
-  mathjs: 11.3.0
+  mathjs: 11.3.1
   monaco-editor: 0.34.1
   next: 12.3.1_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
@@ -400,8 +400,8 @@ packages:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
     dev: true
 
-  /decimal.js/10.4.1:
-    resolution: {integrity: sha512-F29o+vci4DodHYT9UrR5IEbfBw9pE5eSapIJdTqXK5+6hq+t8VRxwQyKlW2i+KDKFkkJQRvFyI/QXD83h8LyQw==}
+  /decimal.js/10.4.2:
+    resolution: {integrity: sha512-ic1yEvwT6GuvaYwBLLY6/aFFgjZdySKTE8en/fkU3QICTmRtgtSlFn0u0BXN06InZwtfCelR7j8LRiDI/02iGA==}
     dev: false
 
   /defined/1.0.0:
@@ -571,14 +571,14 @@ packages:
       js-tokens: 4.0.0
     dev: false
 
-  /mathjs/11.3.0:
-    resolution: {integrity: sha512-HAUFLxyH8WMSDisNljQFIKjp//d1iL0C36nhGEJFwzdMb46gACMG1E8Ze06sES4hJ5jHDv5ieq7r3mDDcU/d4g==}
+  /mathjs/11.3.1:
+    resolution: {integrity: sha512-1gS9QWnR3VwhTPrG36hTdsfMgyaMrjtHTH5duQ30ts8KyShDwlgxAQYY0ZnilxeVjM1WLMS+jA2MPyZaR7pA3A==}
     engines: {node: '>= 14'}
     hasBin: true
     dependencies:
       '@babel/runtime': 7.19.4
       complex.js: 2.1.1
-      decimal.js: 10.4.1
+      decimal.js: 10.4.2
       escape-latex: 1.2.0
       fraction.js: 4.2.0
       javascript-natural-sort: 0.7.1
