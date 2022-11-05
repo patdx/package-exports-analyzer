@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@monaco-editor/react': 4.4.6
   '@tanstack/react-query': 4.14.3
-  '@types/lodash': 4.14.186
+  '@types/lodash': 4.14.188
   '@types/node': 18.11.9
   '@types/react': 18.0.24
   '@types/react-dom': 18.0.8
@@ -41,7 +41,7 @@ dependencies:
   zustand: 4.1.3_react@18.2.0
 
 devDependencies:
-  '@types/lodash': 4.14.186
+  '@types/lodash': 4.14.188
   '@types/node': 18.11.9
   '@types/react': 18.0.24
   '@types/react-dom': 18.0.8
@@ -254,8 +254,8 @@ packages:
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
 
-  /@types/lodash/4.14.186:
-    resolution: {integrity: sha512-eHcVlLXP0c2FlMPm56ITode2AgLMSa6aJ05JTTbYbI+7EMkCEE5qk2E41d5g2lCVTqRe0GnnRFurmlCsDODrPw==}
+  /@types/lodash/4.14.188:
+    resolution: {integrity: sha512-zmEmF5OIM3rb7SbLCFYoQhO4dGt2FRM9AMkxvA3LaADOF1n8in/zGJlWji9fmafLoNyz+FoL6FE0SLtGIArD7w==}
     dev: true
 
   /@types/node/18.11.9:
