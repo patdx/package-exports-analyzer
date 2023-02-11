@@ -13,7 +13,7 @@
     "fp-ts": "2.13.1",
     "lodash": "4.17.21",
     "mathjs": "11.5.1",
-    "monaco-editor": "0.34.1",
+    "monaco-editor": "0.35.0",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
