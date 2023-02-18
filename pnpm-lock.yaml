@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@monaco-editor/react': 4.4.6
-  '@tanstack/react-query': 4.24.6
+  '@tanstack/react-query': 4.24.9
   '@types/lodash': 4.14.191
   '@types/node': 18.13.0
   '@types/react': 18.0.28
@@ -27,7 +27,7 @@ specifiers:
 
 dependencies:
   '@monaco-editor/react': 4.4.6_3vguicescx7w3divwtpzvtv5wy
-  '@tanstack/react-query': 4.24.6_biqbaboplfbrettd7655fr4n2y
+  '@tanstack/react-query': 4.24.9_biqbaboplfbrettd7655fr4n2y
   clsx: 1.2.1
   dirty-json: 0.9.2
   fp-ts: 2.13.1
@@ -232,12 +232,12 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@tanstack/query-core/4.24.6:
-    resolution: {integrity: sha512-Tfru6YTDTCpX7dKVwHp/sosw/dNjEdzrncduUjIkQxn7n7u+74HT2ZrGtwwrU6Orws4x7zp3FKRqBPWVVhpx9w==}
+  /@tanstack/query-core/4.24.9:
+    resolution: {integrity: sha512-pZQ2NpdaHzx8gPPkAPh06d6zRkjfonUzILSYBXrdHDapP2eaBbGsx5L4/dMF+fyAglFzQZdDDzZgAykbM20QVw==}
     dev: false
 
-  /@tanstack/react-query/4.24.6_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-pbJUVZCS4pcXS0kZiY+mVJ01ude0GrH5OXT2g9whcqSveRG/YVup/XdA9NdRpSMGkP2HxDRxxRNsTXkniWeIIA==}
+  /@tanstack/react-query/4.24.9_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-6WLwUT9mrngIinRtcZjrWOUENOuLbWvQpKmU6DZCo2iPQVA+qvv3Ji90Amme4AkUyWQ8ZSSRTnAFq8V2tj2ACg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -248,7 +248,7 @@ packages:
       react-native:
         optional: true
     dependencies:
-      '@tanstack/query-core': 4.24.6
+      '@tanstack/query-core': 4.24.9
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       use-sync-external-store: 1.2.0_react@18.2.0
