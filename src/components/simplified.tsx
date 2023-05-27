@@ -7,6 +7,10 @@ export const SimplifiedExports = () => {
 
   const simplified = simplifyExports(info.requestedPath.data?.exports);
 
+  if (process.env.NODE_ENV === 'production') {
+    return null; // experimental feature
+  }
+
   return (
     <Card title="Simplified exports (experimental)">
       <pre className=" whitespace-pre-wrap">

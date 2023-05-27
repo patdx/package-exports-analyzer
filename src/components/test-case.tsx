@@ -29,7 +29,7 @@ export const TestCase: FC<{
           require: isRequire,
           conditions: testCase.conditions,
           browser: testCase.browser,
-        }),
+        })?.join(', '), // resolve.exports may return multiple alternatives
       (err) => err as Error
     ),
     E.match(
