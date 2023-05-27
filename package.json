@@ -14,15 +14,15 @@
     "lodash": "4.17.21",
     "mathjs": "11.8.0",
     "monaco-editor": "0.38.0",
-    "next": "latest",
+    "next": "^13.4.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "resolve.exports": "1.1.1",
+    "resolve.exports": "2.0.2",
     "zustand": "4.3.8"
   },
   "devDependencies": {
     "@types/lodash": "4.14.195",
-    "@types/node": "18.16.16",
+    "@types/node": "20.2.5",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",

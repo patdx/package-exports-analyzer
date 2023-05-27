@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 import clsx from 'clsx';
-import create from 'zustand';
+import { create } from 'zustand';
 import { listEntryPoints } from '../shared/list-entry-points';
 import { IPackageJson } from '../shared/types';
 import { Card } from './card';
