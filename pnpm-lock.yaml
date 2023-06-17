@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -9,8 +9,8 @@ dependencies:
     specifier: 4.5.1
     version: 4.5.1(monaco-editor@0.39.0)(react-dom@18.2.0)(react@18.2.0)
   '@tanstack/react-query':
-    specifier: 4.29.12
-    version: 4.29.12(react-dom@18.2.0)(react@18.2.0)
+    specifier: 4.29.14
+    version: 4.29.14(react-dom@18.2.0)(react@18.2.0)
   clsx:
     specifier: 1.2.1
     version: 1.2.1
@@ -24,8 +24,8 @@ dependencies:
     specifier: 4.17.21
     version: 4.17.21
   mathjs:
-    specifier: 11.8.0
-    version: 11.8.0
+    specifier: 11.8.1
+    version: 11.8.1
   monaco-editor:
     specifier: 0.39.0
     version: 0.39.0
@@ -53,11 +53,11 @@ devDependencies:
     specifier: 20.2.5
     version: 20.2.5
   '@types/react':
-    specifier: 18.2.11
-    version: 18.2.11
+    specifier: 18.2.12
+    version: 18.2.12
   '@types/react-dom':
-    specifier: 18.2.4
-    version: 18.2.4
+    specifier: 18.2.5
+    version: 18.2.5
   autoprefixer:
     specifier: 10.4.14
     version: 10.4.14(postcss@8.4.24)
@@ -84,8 +84,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /@babel/runtime@7.21.0:
-    resolution: {integrity: sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==}
+  /@babel/runtime@7.22.5:
+    resolution: {integrity: sha512-ecjvYlnAaZ/KVneE/OdKYBYfgXV3Ptu6zQWmgEF7vwKhQnvVS6bjMD2XYgj+SNvQ1GfK/pjgokfPkC/2CO8CuA==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
@@ -259,12 +259,12 @@ packages:
       tslib: 2.5.2
     dev: false
 
-  /@tanstack/query-core@4.29.11:
-    resolution: {integrity: sha512-8C+hF6SFAb/TlFZyS9FItgNwrw4PMa7YeX+KQYe2ZAiEz6uzg6yIr+QBzPkUwZ/L0bXvGd1sufTm3wotoz+GwQ==}
+  /@tanstack/query-core@4.29.14:
+    resolution: {integrity: sha512-ElEAahtLWA7Y7c2Haw10KdEf2tx+XZl/Z8dmyWxZehxWK3TPL5qtXtb7kUEhvt/8u2cSP62fLxgh2qqzMMGnDQ==}
     dev: false
 
-  /@tanstack/react-query@4.29.12(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-zhcN6+zF6cxprxhTHQajHGlvxgK8npnp9uLe9yaWhGc6sYcPWXzyO4raL4HomUzQOPzu3jLvkriJQ7BOrDM8vA==}
+  /@tanstack/react-query@4.29.14(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-wh4bd/QIy85YgTDBtj/7/9ZkpRX41QdZuUL8xKoSzuMCukXvAE1/oJ4p0F15lqQq9W3g2pgcbr2Aa+CNvqABhg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -275,7 +275,7 @@ packages:
       react-native:
         optional: true
     dependencies:
-      '@tanstack/query-core': 4.29.11
+      '@tanstack/query-core': 4.29.14
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       use-sync-external-store: 1.2.0(react@18.2.0)
@@ -293,14 +293,14 @@ packages:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
-  /@types/react-dom@18.2.4:
-    resolution: {integrity: sha512-G2mHoTMTL4yoydITgOGwWdWMVd8sNgyEP85xVmMKAPUBwQWm9wBPQUmvbeF4V3WBY1P7mmL4BkjQ0SqUpf1snw==}
+  /@types/react-dom@18.2.5:
+    resolution: {integrity: sha512-sRQsOS/sCLnpQhR4DSKGTtWFE3FZjpQa86KPVbhUqdYMRZ9FEFcfAytKhR/vUG2rH1oFbOOej6cuD7MFSobDRQ==}
     dependencies:
-      '@types/react': 18.2.11
+      '@types/react': 18.2.12
     dev: true
 
-  /@types/react@18.2.11:
-    resolution: {integrity: sha512-+hsJr9hmwyDecSMQAmX7drgbDpyE+EgSF6t7+5QEBAn1tQK7kl1vWZ4iRf6SjQ8lk7dyEULxUmZOIpN0W5baZA==}
+  /@types/react@18.2.12:
+    resolution: {integrity: sha512-ndmBMLCgn38v3SntMeoJaIrO6tGHYKMEBohCUmw8HoLLQdRMOIGXfeYaBTLe2lsFaSB3MOK1VXscYFnmLtTSmw==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -636,12 +636,12 @@ packages:
       js-tokens: 4.0.0
     dev: false
 
-  /mathjs@11.8.0:
-    resolution: {integrity: sha512-I7r8HCoqUGyEiHQdeOCF2m2k9N+tcOHO3cZQ3tyJkMMBQMFqMR7dMQEboBMJAiFW2Um3PEItGPwcOc4P6KRqwg==}
+  /mathjs@11.8.1:
+    resolution: {integrity: sha512-SHW5fqQXTHd4VqkKEtjQV16d/3fLUfna0VeW8Zd//dNWWLxHarEvXIqSs3vWCSPYc86l1r6yPcKvez8ZVLsoTg==}
     engines: {node: '>= 14'}
     hasBin: true
     dependencies:
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': 7.22.5
       complex.js: 2.1.1
       decimal.js: 10.4.3
       escape-latex: 1.2.0
