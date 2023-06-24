@@ -9,8 +9,8 @@ dependencies:
     specifier: 4.5.1
     version: 4.5.1(monaco-editor@0.39.0)(react-dom@18.2.0)(react@18.2.0)
   '@tanstack/react-query':
-    specifier: 4.29.14
-    version: 4.29.14(react-dom@18.2.0)(react@18.2.0)
+    specifier: 4.29.15
+    version: 4.29.15(react-dom@18.2.0)(react@18.2.0)
   clsx:
     specifier: 1.2.1
     version: 1.2.1
@@ -24,8 +24,8 @@ dependencies:
     specifier: 4.17.21
     version: 4.17.21
   mathjs:
-    specifier: 11.8.1
-    version: 11.8.1
+    specifier: 11.8.2
+    version: 11.8.2
   monaco-editor:
     specifier: 0.39.0
     version: 0.39.0
@@ -53,11 +53,11 @@ devDependencies:
     specifier: 20.2.5
     version: 20.2.5
   '@types/react':
-    specifier: 18.2.12
-    version: 18.2.12
+    specifier: 18.2.14
+    version: 18.2.14
   '@types/react-dom':
-    specifier: 18.2.5
-    version: 18.2.5
+    specifier: 18.2.6
+    version: 18.2.6
   autoprefixer:
     specifier: 10.4.14
     version: 10.4.14(postcss@8.4.24)
@@ -259,12 +259,12 @@ packages:
       tslib: 2.5.2
     dev: false
 
-  /@tanstack/query-core@4.29.14:
-    resolution: {integrity: sha512-ElEAahtLWA7Y7c2Haw10KdEf2tx+XZl/Z8dmyWxZehxWK3TPL5qtXtb7kUEhvt/8u2cSP62fLxgh2qqzMMGnDQ==}
+  /@tanstack/query-core@4.29.15:
+    resolution: {integrity: sha512-Recc1d5rjHesKhzlH3Aw66v+vQxtB9OHEXP/vxgEcEJ0DwEpfe3EQ4id20vuBJHY2XRjfgWGmUs6ZgK6PSsTXA==}
     dev: false
 
-  /@tanstack/react-query@4.29.14(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-wh4bd/QIy85YgTDBtj/7/9ZkpRX41QdZuUL8xKoSzuMCukXvAE1/oJ4p0F15lqQq9W3g2pgcbr2Aa+CNvqABhg==}
+  /@tanstack/react-query@4.29.15(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-1zDkv95ljuJ623hhbYU8YIprPW2x6774kh3IQNEuZav62+S+Zr26uUOrE2zGRp9I1uO5Liw/0uYB3dWXQP5+3Q==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -275,7 +275,7 @@ packages:
       react-native:
         optional: true
     dependencies:
-      '@tanstack/query-core': 4.29.14
+      '@tanstack/query-core': 4.29.15
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       use-sync-external-store: 1.2.0(react@18.2.0)
@@ -293,14 +293,14 @@ packages:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
-  /@types/react-dom@18.2.5:
-    resolution: {integrity: sha512-sRQsOS/sCLnpQhR4DSKGTtWFE3FZjpQa86KPVbhUqdYMRZ9FEFcfAytKhR/vUG2rH1oFbOOej6cuD7MFSobDRQ==}
+  /@types/react-dom@18.2.6:
+    resolution: {integrity: sha512-2et4PDvg6PVCyS7fuTc4gPoksV58bW0RwSxWKcPRcHZf0PRUGq03TKcD/rUHe3azfV6/5/biUBJw+HhCQjaP0A==}
     dependencies:
-      '@types/react': 18.2.12
+      '@types/react': 18.2.14
     dev: true
 
-  /@types/react@18.2.12:
-    resolution: {integrity: sha512-ndmBMLCgn38v3SntMeoJaIrO6tGHYKMEBohCUmw8HoLLQdRMOIGXfeYaBTLe2lsFaSB3MOK1VXscYFnmLtTSmw==}
+  /@types/react@18.2.14:
+    resolution: {integrity: sha512-A0zjq+QN/O0Kpe30hA1GidzyFjatVvrpIvWLxD+xv67Vt91TWWgco9IvrJBkeyHm1trGaFS/FSGqPlhyeZRm0g==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -636,8 +636,8 @@ packages:
       js-tokens: 4.0.0
     dev: false
 
-  /mathjs@11.8.1:
-    resolution: {integrity: sha512-SHW5fqQXTHd4VqkKEtjQV16d/3fLUfna0VeW8Zd//dNWWLxHarEvXIqSs3vWCSPYc86l1r6yPcKvez8ZVLsoTg==}
+  /mathjs@11.8.2:
+    resolution: {integrity: sha512-ZePu0oDbM0vuFExikIMY/9syjo/jbgNbX6ti+iMdaALDuxciMCsXIslGDBEn7QCpCWYBiVCYmc0lsmk5bwHBdQ==}
     engines: {node: '>= 14'}
     hasBin: true
     dependencies:
