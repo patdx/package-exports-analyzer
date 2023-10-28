@@ -24,8 +24,8 @@ dependencies:
     specifier: 4.17.21
     version: 4.17.21
   mathjs:
-    specifier: 11.12.0
-    version: 11.12.0
+    specifier: 12.0.0
+    version: 12.0.0
   monaco-editor:
     specifier: 0.44.0
     version: 0.44.0
@@ -639,9 +639,9 @@ packages:
       js-tokens: 4.0.0
     dev: false
 
-  /mathjs@11.12.0:
-    resolution: {integrity: sha512-UGhVw8rS1AyedyI55DGz9q1qZ0p98kyKPyc9vherBkoueLntPfKtPBh14x+V4cdUWK0NZV2TBwqRFlvadscSuw==}
-    engines: {node: '>= 14'}
+  /mathjs@12.0.0:
+    resolution: {integrity: sha512-Oz3swPplNPe7taoP6WrkKhQzhDE2SwvOgLzu8H3EN+hEadw2GjEJUm6Xl+hrioHoB8g2BYb3gfw1glSzhdBKYw==}
+    engines: {node: '>= 18'}
     hasBin: true
     dependencies:
       '@babel/runtime': 7.23.2
