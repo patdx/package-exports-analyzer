@@ -18,8 +18,8 @@ dependencies:
     specifier: 0.9.2
     version: 0.9.2
   fp-ts:
-    specifier: 2.16.1
-    version: 2.16.1
+    specifier: 2.16.2
+    version: 2.16.2
   lodash:
     specifier: 4.17.21
     version: 4.17.21
@@ -495,8 +495,8 @@ packages:
       to-regex-range: 5.0.1
     dev: true
 
-  /fp-ts@2.16.1:
-    resolution: {integrity: sha512-by7U5W8dkIzcvDofUcO42yl9JbnHTEDBrzu3pt5fKT+Z4Oy85I21K80EYJYdjQGC2qum4Vo55Ag57iiIK4FYuA==}
+  /fp-ts@2.16.2:
+    resolution: {integrity: sha512-CkqAjnIKFqvo3sCyoBTqgJvF+bHrSik584S9nhTjtBESLx26cbtVMR/T9a6ApChOcSDAaM3JydDmWDUn4EEXng==}
     dev: false
 
   /fraction.js@4.3.4:
