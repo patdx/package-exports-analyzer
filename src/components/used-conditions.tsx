@@ -1,11 +1,11 @@
-import { FC, useEffect } from 'react';
 import clsx from 'clsx';
+import { useSearchParams } from 'next/navigation';
+import { FC, useEffect } from 'react';
 import { create } from 'zustand';
 import { listEntryPoints } from '../shared/list-entry-points';
 import { IPackageJson } from '../shared/types';
-import { Card } from './card';
 import { Button } from './button';
-import { useRouter } from 'next/router';
+import { Card } from './card';
 
 interface SelectedConditions {
   preset?: string;
@@ -88,7 +88,7 @@ const useSelectedConditions = create<SelectedConditions>((set, get) => ({
       selected.add(name);
 
       const mutuallyExclusiveConditions = KNOWN_CONDITONS_SETS.find((set) =>
-        set.includes(name)
+        set.includes(name),
       );
       if (mutuallyExclusiveConditions) {
         for (const excludeName of mutuallyExclusiveConditions) {
@@ -161,15 +161,17 @@ export const UsedConditions: FC<{
 
   const selected = useSelectedConditions();
 
-  const router = useRouter();
+  const { applyPreset } = selected;
 
-  const preset = router.query.preset as string | undefined;
+  const searchParams = useSearchParams();
+
+  const preset = searchParams.get('preset') as string | undefined;
 
   useEffect(() => {
     if (preset) {
-      selected.applyPreset(preset);
+      applyPreset(preset);
     }
-  }, [preset]);
+  }, [applyPreset, preset]);
 
   const entryPoints = listEntryPoints(props.pkg, selected.selected);
 
@@ -177,7 +179,7 @@ export const UsedConditions: FC<{
 
   if (!selected.selected.has('default')) {
     warnings.push(
-      `Deselecting 'default' may lead to strange results because this is the standard fallback condition.`
+      `Deselecting 'default' may lead to strange results because this is the standard fallback condition.`,
     );
   }
 
@@ -199,10 +201,14 @@ export const UsedConditions: FC<{
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-4">
-          {groups.map((group) => (
-            <div className="flex flex-none flex-col items-center gap-1">
+          {groups.map((group, index) => (
+            <div
+              key={index}
+              className="flex flex-none flex-col items-center gap-1"
+            >
               {group.all.map((name) => (
                 <button
+                  key={name}
                   type="button"
                   onClick={() => selected.toggle(name)}
                   className={clsx(
@@ -211,7 +217,7 @@ export const UsedConditions: FC<{
                       ? 'bg-gray-200 hover:bg-gray-300 active:bg-gray-400'
                       : 'bg-gray-100 text-gray-500 line-through',
                     selected.selected.has(name) &&
-                      '!bg-blue-500 font-bold !text-white'
+                      '!bg-blue-500 font-bold !text-white',
                   )}
                 >
                   {name}
@@ -224,7 +230,10 @@ export const UsedConditions: FC<{
         {warnings.length >= 1 && (
           <div className="mt-2 flex flex-col gap-4">
             {warnings.map((warning) => (
-              <div className="rounded border border-red-600 bg-red-200 p-1">
+              <div
+                key={warning}
+                className="rounded border border-red-600 bg-red-200 p-1"
+              >
                 {warning}
               </div>
             ))}

@@ -1,6 +1,6 @@
 // prettier.config.js
-module.exports = {
+export default {
   singleQuote: true,
-  plugins: [require('prettier-plugin-tailwindcss')],
+  plugins: ['prettier-plugin-tailwindcss'],
   proseWrap: 'always',
 };

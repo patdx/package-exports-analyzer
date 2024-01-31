@@ -44,7 +44,10 @@ const DependenciesList: FC<{
         const text = props.isDev ? `${specifier} (dev)` : specifier;
 
         return (
-          <li className={props.isDev ? 'text-gray-500' : undefined}>
+          <li
+            key={specifier}
+            className={props.isDev ? 'text-gray-500' : undefined}
+          >
             <Link href={`/${specifier}`}>{text}</Link>
           </li>
         );

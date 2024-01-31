@@ -1,8 +1,8 @@
 // could be a string like
 // @tanstack/react-query@4.7.1/my-subdir
 
-import { QueryFunction, useQueries, useQuery } from '@tanstack/react-query';
-import { useRouter } from 'next/router';
+import { QueryFunction, useQuery } from '@tanstack/react-query';
+import { useParams } from 'next/navigation';
 import { IPackageJson } from './types';
 
 interface ParsedPackageQuery {
@@ -81,31 +81,25 @@ export const usePackageInfo = (packageQuery?: string) => {
   //   ? `${nameWithVersion}/package.json`
   //   : undefined;
 
-  const rootPackageJson = useQuery(
-    [`https://unpkg.com/${parsed?.nameWithVersion}/package.json`],
-    fetchJson as QueryFunction<IPackageJson>,
-    {
-      enabled: Boolean(parsed),
-    }
-  );
+  const rootPackageJson = useQuery({
+    queryKey: [`https://unpkg.com/${parsed?.nameWithVersion}/package.json`],
+    queryFn: fetchJson as QueryFunction<IPackageJson>,
+    enabled: Boolean(parsed),
+  });
 
-  const meta = useQuery(
-    [`https://unpkg.com/${parsed?.nameWithVersion}/?meta`],
-    fetchJson as QueryFunction<UnpkgMeta>,
-    {
-      enabled: Boolean(parsed),
-    }
-  );
+  const meta = useQuery({
+    queryKey: [`https://unpkg.com/${parsed?.nameWithVersion}/?meta`],
+    queryFn: fetchJson as QueryFunction<UnpkgMeta>,
+    enabled: Boolean(parsed),
+  });
 
-  const path = useQuery(
-    [
+  const path = useQuery({
+    queryKey: [
       `https://unpkg.com/${parsed?.nameWithVersion}${parsed?.path}/package.json`,
     ],
-    fetchJson as QueryFunction<IPackageJson>,
-    {
-      enabled: Boolean(parsed?.path),
-    }
-  );
+    queryFn: fetchJson as QueryFunction<IPackageJson>,
+    enabled: Boolean(parsed?.path),
+  });
 
   const requestedPath = parsed?.path ? path : rootPackageJson;
 
@@ -123,9 +117,9 @@ export const usePackageInfo = (packageQuery?: string) => {
 };
 
 export const usePackageInfoForPage = () => {
-  const router = useRouter();
+  const params = useParams()
 
-  const query = (router.query.slug as string[])?.join('/');
+  const query = (params.slug as string[])?.join('/');
 
   const info = usePackageInfo(query);
 

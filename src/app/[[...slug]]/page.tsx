@@ -1,24 +1,29 @@
+'use client';
+
 import Editor from '@monaco-editor/react';
 import dirtyJson from 'dirty-json';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Router from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
-import { Button } from '../components/button';
-import { Card } from '../components/card';
-import { Dependencies } from '../components/dependencies';
-import { PackageFileList } from '../components/package-file-list';
-import { References } from '../components/references';
-import { SimplifiedExports } from '../components/simplified';
-import { TestCase } from '../components/test-case';
-import { UsedConditions } from '../components/used-conditions';
-import { analyzePackageJson } from '../shared/analyze-package-json';
+import { Button } from '../../components/button';
+import { Card } from '../../components/card';
+import { Dependencies } from '../../components/dependencies';
+import { PackageFileList } from '../../components/package-file-list';
+import { References } from '../../components/references';
+import { SimplifiedExports } from '../../components/simplified';
+import { TestCase } from '../../components/test-case';
+import { UsedConditions } from '../../components/used-conditions';
+import { analyzePackageJson } from '../../shared/analyze-package-json';
 import {
   INITIAL_TEST_CASES,
   INITIAL_VALUE_JSON,
   INITIAL_VALUE_TEXT,
-} from '../shared/consts';
-import { usePackageInfo, usePackageInfoForPage } from '../shared/load-package';
+} from '../../shared/consts';
+import {
+  usePackageInfo,
+  usePackageInfoForPage,
+} from '../../shared/load-package';
 
 // Useful links
 // https://www.npmjs.com/package/exports-test
