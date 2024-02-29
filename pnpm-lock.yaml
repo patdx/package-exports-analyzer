@@ -43,18 +43,18 @@ dependencies:
     version: 2.0.2
   zustand:
     specifier: 4.5.1
-    version: 4.5.1(@types/react@18.2.60)(react@18.2.0)
+    version: 4.5.1(@types/react@18.2.61)(react@18.2.0)
 
 devDependencies:
   '@types/lodash':
     specifier: 4.14.202
     version: 4.14.202
   '@types/node':
-    specifier: 20.11.22
-    version: 20.11.22
+    specifier: 20.11.24
+    version: 20.11.24
   '@types/react':
-    specifier: 18.2.60
-    version: 18.2.60
+    specifier: 18.2.61
+    version: 18.2.61
   '@types/react-dom':
     specifier: 18.2.19
     version: 18.2.19
@@ -376,8 +376,8 @@ packages:
     resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
     dev: true
 
-  /@types/node@20.11.22:
-    resolution: {integrity: sha512-/G+IxWxma6V3E+pqK1tSl2Fo1kl41pK1yeCyDsgkF9WlVAme4j5ISYM2zR11bgLFJGLN5sVK40T4RJNuiZbEjA==}
+  /@types/node@20.11.24:
+    resolution: {integrity: sha512-Kza43ewS3xoLgCEpQrsT+xRo/EJej1y0kVYGiLFE1NEODXGzTfwiC6tXTLMQskn1X4/Rjlh0MQUvx9W+L9long==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -388,11 +388,11 @@ packages:
   /@types/react-dom@18.2.19:
     resolution: {integrity: sha512-aZvQL6uUbIJpjZk4U8JZGbau9KDeAwMfmhyWorxgBkqDIEf6ROjRozcmPIicqsUwPUjbkDfHKgGee1Lq65APcA==}
     dependencies:
-      '@types/react': 18.2.60
+      '@types/react': 18.2.61
     dev: true
 
-  /@types/react@18.2.60:
-    resolution: {integrity: sha512-dfiPj9+k20jJrLGOu9Nf6eqxm2EyJRrq2NvwOFsfbb7sFExZ9WELPs67UImHj3Ayxg8ruTtKtNnbjaF8olPq0A==}
+  /@types/react@18.2.61:
+    resolution: {integrity: sha512-NURTN0qNnJa7O/k4XUkEW2yfygA+NxS0V5h1+kp9jPwhzZy95q3ADoGMP0+JypMhrZBTTgjKAUlTctde1zzeQA==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -3027,7 +3027,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zustand@4.5.1(@types/react@18.2.60)(react@18.2.0):
+  /zustand@4.5.1(@types/react@18.2.61)(react@18.2.0):
     resolution: {integrity: sha512-XlauQmH64xXSC1qGYNv00ODaQ3B+tNPoy22jv2diYiP4eoDKr9LA+Bh5Bc3gplTrFdb6JVI+N4kc1DZ/tbtfPg==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -3042,7 +3042,7 @@ packages:
       react:
         optional: true
     dependencies:
-      '@types/react': 18.2.60
+      '@types/react': 18.2.61
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
