@@ -9,8 +9,8 @@ dependencies:
     specifier: 4.6.0
     version: 4.6.0(monaco-editor@0.47.0)(react-dom@18.2.0)(react@18.2.0)
   '@tanstack/react-query':
-    specifier: 5.28.9
-    version: 5.28.9(react@18.2.0)
+    specifier: 5.28.14
+    version: 5.28.14(react@18.2.0)
   clsx:
     specifier: 2.1.0
     version: 2.1.0
@@ -43,7 +43,7 @@ dependencies:
     version: 2.0.2
   zustand:
     specifier: 4.5.2
-    version: 4.5.2(@types/react@18.2.73)(react@18.2.0)
+    version: 4.5.2(@types/react@18.2.74)(react@18.2.0)
 
 devDependencies:
   '@types/lodash':
@@ -53,8 +53,8 @@ devDependencies:
     specifier: 20.12.2
     version: 20.12.2
   '@types/react':
-    specifier: 18.2.73
-    version: 18.2.73
+    specifier: 18.2.74
+    version: 18.2.74
   '@types/react-dom':
     specifier: 18.2.23
     version: 18.2.23
@@ -355,16 +355,16 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@tanstack/query-core@5.28.9:
-    resolution: {integrity: sha512-hNlfCiqZevr3GRVPXS3MhaGW5hjcxvCsIQ4q6ff7EPlvFwYZaS+0d9EIIgofnegDaU2BbCDlyURoYfRl5rmzow==}
+  /@tanstack/query-core@5.28.13:
+    resolution: {integrity: sha512-C3+CCOcza+mrZ7LglQbjeYEOTEC3LV0VN0eYaIN6GvqAZ8Foegdgch7n6QYPtT4FuLae5ALy+m+ZMEKpD6tMCQ==}
     dev: false
 
-  /@tanstack/react-query@5.28.9(react@18.2.0):
-    resolution: {integrity: sha512-vwifBkGXsydsLxFOBMe3+f8kvtDoqDRDwUNjPHVDDt+FoBetCbOWAUHgZn4k+CVeZgLmy7bx6aKeDbe3e8koOQ==}
+  /@tanstack/react-query@5.28.14(react@18.2.0):
+    resolution: {integrity: sha512-cZqt03Igb3I9tM72qNX5TAAmeYl75Z+k4Mv92VkXIXc2hCrv0fIywd7GN3JV1BBJl4mr7Cc+OOKKOPy8sNVOkA==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-core': 5.28.9
+      '@tanstack/query-core': 5.28.13
       react: 18.2.0
     dev: false
 
@@ -388,11 +388,11 @@ packages:
   /@types/react-dom@18.2.23:
     resolution: {integrity: sha512-ZQ71wgGOTmDYpnav2knkjr3qXdAFu0vsk8Ci5w3pGAIdj7/kKAyn+VsQDhXsmzzzepAiI9leWMmubXz690AI/A==}
     dependencies:
-      '@types/react': 18.2.73
+      '@types/react': 18.2.74
     dev: true
 
-  /@types/react@18.2.73:
-    resolution: {integrity: sha512-XcGdod0Jjv84HOC7N5ziY3x+qL0AfmubvKOZ9hJjJ2yd5EE+KYjWhdOjt387e9HPheHkdggF9atTifMRtyAaRA==}
+  /@types/react@18.2.74:
+    resolution: {integrity: sha512-9AEqNZZyBx8OdZpxzQlaFEVCSFUM2YXJH46yPOiOpm078k6ZLOCcuAzGum/zK8YBwY+dbahVNbHrbgrAwIRlqw==}
     dependencies:
       '@types/prop-types': 15.7.5
       csstype: 3.1.2
@@ -2995,7 +2995,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zustand@4.5.2(@types/react@18.2.73)(react@18.2.0):
+  /zustand@4.5.2(@types/react@18.2.74)(react@18.2.0):
     resolution: {integrity: sha512-2cN1tPkDVkwCy5ickKrI7vijSjPksFRfqS6237NzT0vqSsztTNnQdHw9mmN7uBdk3gceVXU0a+21jFzFzAc9+g==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -3010,7 +3010,7 @@ packages:
       react:
         optional: true
     dependencies:
-      '@types/react': 18.2.73
+      '@types/react': 18.2.74
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
