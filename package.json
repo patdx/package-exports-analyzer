@@ -17,8 +17,8 @@
     "mathjs": "12.4.2",
     "monaco-editor": "0.48.0",
     "next": "^14.1.0",
-    "react": "18.3.0",
-    "react-dom": "18.3.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "resolve.exports": "2.0.2",
     "zustand": "4.5.2"
   },
