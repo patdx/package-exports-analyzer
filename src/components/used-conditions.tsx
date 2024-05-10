@@ -14,7 +14,7 @@ interface SelectedConditions {
   applyPreset: (name: string) => void;
 }
 
-const KNOWN_CONDITONS_SETS: string[][] = [
+const KNOWN_CONDITON_SETS: string[][] = [
   ['import', 'require'],
   ['browser', 'node'],
   ['production', 'development'],
@@ -22,7 +22,7 @@ const KNOWN_CONDITONS_SETS: string[][] = [
   ['worker', 'electron', 'worklet'],
   ['react-native'],
   ['types'],
-  ['deno'],
+  ['deno', 'bun'],
   ['solid'],
   // ['node-addons'],
   ['default'],
@@ -87,7 +87,7 @@ const useSelectedConditions = create<SelectedConditions>((set, get) => ({
     } else {
       selected.add(name);
 
-      const mutuallyExclusiveConditions = KNOWN_CONDITONS_SETS.find((set) =>
+      const mutuallyExclusiveConditions = KNOWN_CONDITON_SETS.find((set) =>
         set.includes(name),
       );
       if (mutuallyExclusiveConditions) {
@@ -124,7 +124,7 @@ const sortIntoGroups = (names?: string[]): ConditionGroup[] => {
   const startGroups: ConditionGroup[] = [];
   const endGroups: ConditionGroup[] = [];
 
-  for (const knownConditionSet of KNOWN_CONDITONS_SETS) {
+  for (const knownConditionSet of KNOWN_CONDITON_SETS) {
     const result: ConditionGroup = {
       all: knownConditionSet,
       used: [],

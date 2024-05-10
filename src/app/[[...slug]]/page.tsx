@@ -4,7 +4,7 @@ import Editor from '@monaco-editor/react';
 import dirtyJson from 'dirty-json';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Router from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import { Button } from '../../components/button';
 import { Card } from '../../components/card';
@@ -54,6 +54,8 @@ const Home: NextPage = () => {
 
   const analysis = useMemo(() => analyzePackageJson(pkg), [pkg]);
 
+  const router = useRouter();
+
   return (
     <div className="flex h-screen flex-col">
       <div className="flex flex-none items-center gap-2 p-2">
@@ -68,7 +70,7 @@ const Home: NextPage = () => {
           onClick={() => {
             const packageName = prompt('Enter a package name');
             if (!packageName) return;
-            Router.push(`/${packageName}`);
+            router.push(`/${packageName}`);
           }}
         >
           Load package.json from NPM...
