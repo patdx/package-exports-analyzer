@@ -12,8 +12,8 @@ importers:
         specifier: 4.6.0
         version: 4.6.0(monaco-editor@0.49.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/react-query':
-        specifier: 5.38.0
-        version: 5.38.0(react@18.3.1)
+        specifier: 5.39.0
+        version: 5.39.0(react@18.3.1)
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -261,8 +261,8 @@ packages:
   '@tanstack/query-core@5.38.0':
     resolution: {integrity: sha512-QtkoxvFcu52mNpp3+qOo9H265m3rt83Dgbw5WnNyJvr83cegrQ7zT8haHhL4Rul6ZQkeovxyWbXVW9zI0WYx6g==}
 
-  '@tanstack/react-query@5.38.0':
-    resolution: {integrity: sha512-LzMSPS2zSd6KUQfSqYxHBMuB3N0k3tZRNPCXeWXgLMGdrscgleRhE8Ni3QNkxGYvLW+qxuu8RKpuewsCiCKg3g==}
+  '@tanstack/react-query@5.39.0':
+    resolution: {integrity: sha512-zc0WnyEffyTgG+myLv8cY2tJOUT6jOprCiprpbMqylCaCFipSDUPCYCt2AC+qxgk2CFuqiI/fjb1u5/HhLkrPg==}
     peerDependencies:
       react: ^18.0.0
 
@@ -801,6 +801,7 @@ packages:
 
   glob@7.1.6:
     resolution: {integrity: sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@14.0.0:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
@@ -1831,7 +1832,7 @@ snapshots:
 
   '@tanstack/query-core@5.38.0': {}
 
-  '@tanstack/react-query@5.38.0(react@18.3.1)':
+  '@tanstack/react-query@5.39.0(react@18.3.1)':
     dependencies:
       '@tanstack/query-core': 5.38.0
       react: 18.3.1
