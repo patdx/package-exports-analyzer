@@ -20,7 +20,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "resolve.exports": "2.0.2",
-    "zustand": "4.5.2"
+    "zustand": "4.5.3"
   },
   "devDependencies": {
     "@types/lodash": "4.17.5",
