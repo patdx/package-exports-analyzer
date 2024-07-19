@@ -27,8 +27,8 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       mathjs:
-        specifier: 13.0.2
-        version: 13.0.2
+        specifier: 13.0.3
+        version: 13.0.3
       monaco-editor:
         specifier: 0.50.0
         version: 0.50.0
@@ -97,6 +97,10 @@ packages:
 
   '@babel/runtime@7.24.7':
     resolution: {integrity: sha512-UwgBRMjJP+xv857DCngvqXI3Iq6J4v0wXmwc6sapg+zyhbwmQX67LUEFrkK5tbyJ30jGuG3ZvWpBiB9LCy1kWw==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/runtime@7.24.8':
+    resolution: {integrity: sha512-5F7SDGs1T72ZczbRwbGO9lQi0NLjQxzl6i4lJxLxfW9U5UluCSyEJeniWvnhl3/euNiqQVbo8zruhsDfid0esA==}
     engines: {node: '>=6.9.0'}
 
   '@eslint-community/eslint-utils@4.4.0':
@@ -1053,8 +1057,8 @@ packages:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
 
-  mathjs@13.0.2:
-    resolution: {integrity: sha512-8vK/+InU4FTphRTWsrnvRsgSjbyNupRQYDDIXLuEGDZtJsGdbA9dVV4HZ0amBQb+RXplRjVJNGZZfB0WoHWFWA==}
+  mathjs@13.0.3:
+    resolution: {integrity: sha512-GpP9OW6swA5POZXvgpc/1FYkAr8lKgV04QHS1tIU60klFfplVCYaNzn6qy0vSp0hAQQN7shcx9CeB507dlLujA==}
     engines: {node: '>= 18'}
     hasBin: true
 
@@ -1686,6 +1690,10 @@ snapshots:
   '@alloc/quick-lru@5.2.0': {}
 
   '@babel/runtime@7.24.7':
+    dependencies:
+      regenerator-runtime: 0.14.0
+
+  '@babel/runtime@7.24.8':
     dependencies:
       regenerator-runtime: 0.14.0
 
@@ -2772,9 +2780,9 @@ snapshots:
     dependencies:
       yallist: 4.0.0
 
-  mathjs@13.0.2:
+  mathjs@13.0.3:
     dependencies:
-      '@babel/runtime': 7.24.7
+      '@babel/runtime': 7.24.8
       complex.js: 2.1.1
       decimal.js: 10.4.3
       escape-latex: 1.2.0
