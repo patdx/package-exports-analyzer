@@ -1,13 +1,9 @@
 /** @type {import('next').NextConfig} */
 export default {
   reactStrictMode: true,
-  redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/exports-test',
-        permanent: false,
-      },
-    ];
+  output: 'export',
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
   },
 };
