@@ -1,42 +1,32 @@
-'use client';
-
 import Editor from '@monaco-editor/react';
 import dirtyJson from 'dirty-json';
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
-import { Button } from '../../components/button';
-import { Card } from '../../components/card';
-import { Dependencies } from '../../components/dependencies';
-import { PackageFileList } from '../../components/package-file-list';
-import { References } from '../../components/references';
-import { SimplifiedExports } from '../../components/simplified';
-import { TestCase } from '../../components/test-case';
-import { UsedConditions } from '../../components/used-conditions';
-import { analyzePackageJson } from '../../shared/analyze-package-json';
+import { Button } from './components/button';
+import { Card } from './components/card';
+import { Dependencies } from './components/dependencies';
+import { PackageFileList } from './components/package-file-list';
+import { References } from './components/references';
+import { SimplifiedExports } from './components/simplified';
+import { TestCase } from './components/test-case';
+import { UsedConditions } from './components/used-conditions';
+import { analyzePackageJson } from './shared/analyze-package-json';
 import {
   INITIAL_TEST_CASES,
   INITIAL_VALUE_JSON,
   INITIAL_VALUE_TEXT,
-} from '../../shared/consts';
-import {
-  usePackageInfo,
-  usePackageInfoForPage,
-} from '../../shared/load-package';
+} from './shared/consts';
+import { usePackageInfoForPage } from './shared/load-package';
+import { navigate, replace, usePathname } from './shared/router';
 
-// Useful links
-// https://www.npmjs.com/package/exports-test
-// https://webpack.js.org/guides/package-exports/
-// Looks useful but cannot be used directly:
-// https://github.com/ljharb/list-exports/blob/main/packages/list-exports/index.js
-
-const Home: NextPage = () => {
+const App = () => {
   const [text, setText] = useState(INITIAL_VALUE_TEXT);
-
   const [pkg, setPkg] = useState(INITIAL_VALUE_JSON);
-
   const info = usePackageInfoForPage();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    document.title = 'Package Exports Analyzer';
+  }, []);
 
   useEffect(() => {
     if (info.requestedPath.data) {
@@ -54,13 +44,11 @@ const Home: NextPage = () => {
 
   const analysis = useMemo(() => analyzePackageJson(pkg), [pkg]);
 
-  const router = useRouter();
-
   useEffect(() => {
-    if (!info.parsed) {
-      router.replace('/exports-test');
+    if (!info.parsed && pathname === '/') {
+      replace('/exports-test');
     }
-  }, [info.parsed, router]);
+  }, [info.parsed, pathname]);
 
   return (
     <div className="flex h-screen flex-col">
@@ -71,12 +59,11 @@ const Home: NextPage = () => {
         >
           Package Exports Analyzer
         </a>
-        {/* <div className="flex-1"></div> */}
         <Button
           onClick={() => {
             const packageName = prompt('Enter a package name');
             if (!packageName) return;
-            router.push(`/${packageName}`);
+            navigate(`/${packageName}`);
           }}
         >
           Load package.json from NPM...
@@ -84,11 +71,6 @@ const Home: NextPage = () => {
       </div>
 
       <div className="grid flex-1 grid-cols-5 gap-2 overflow-clip">
-        <Head>
-          <title>Package Exports Analyzer</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-
         <div>
           <PackageFileList />
           <Dependencies pkg={pkg} />
@@ -116,12 +98,7 @@ const Home: NextPage = () => {
         </div>
 
         <div className="relative col-span-2 flex flex-1 flex-col overflow-y-auto">
-          {/* <PackageFileList /> */}
-
           <UsedConditions conditionNames={analysis.conditionNames} pkg={pkg} />
-
-          {/* show a window that has all the sub package jsons listed and selectable*/}
-          {/* using unpkg.com/react/?meta */}
 
           {1 > 2 && (
             <Card title="Test cases">
@@ -135,9 +112,6 @@ const Home: NextPage = () => {
 
           {1 > 0 && <SimplifiedExports />}
 
-          {/* <pre className="text-gray-500 text-sm">
-          {JSON.stringify(parsed, undefined, 2)}
-        </pre> */}
           <div className="flex-1"></div>
           <Card title="References">
             <References />
@@ -148,4 +122,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default App;

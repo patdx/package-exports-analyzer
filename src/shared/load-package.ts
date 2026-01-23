@@ -2,7 +2,7 @@
 // @tanstack/react-query@4.7.1/my-subdir
 
 import { QueryFunction, useQuery } from '@tanstack/react-query';
-import { useParams } from 'next/navigation';
+import { usePathname } from './router';
 import { IPackageJson } from './types';
 
 interface ParsedPackageQuery {
@@ -117,11 +117,19 @@ export const usePackageInfo = (packageQuery?: string) => {
 };
 
 export const usePackageInfoForPage = () => {
-  const params = useParams()
+  const pathname = usePathname();
+  const query = pathname.replace(/^\/+/, '');
+  const normalized = query
+    ? (() => {
+        try {
+          return decodeURIComponent(query);
+        } catch (err) {
+          return query;
+        }
+      })()
+    : undefined;
 
-  const query = (params.slug as string[])?.join('/');
-
-  const info = usePackageInfo(query);
+  const info = usePackageInfo(normalized);
 
   return info;
 };

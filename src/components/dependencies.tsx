@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { FC } from 'react';
+import { Link } from './link';
 import { usePackageInfoForPage } from '../shared/load-package';
 import { IPackageJson } from '../shared/types';
 import { Card } from './card';

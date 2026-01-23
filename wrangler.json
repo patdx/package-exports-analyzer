@@ -3,6 +3,6 @@
   "name": "package-exports-analyzer",
   "compatibility_date": "2025-01-01",
   "assets": {
-    "directory": "./out"
+    "directory": "./dist"
   }
 }

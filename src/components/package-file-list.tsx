@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { usePackageInfoForPage } from '../shared/load-package';
+import { Link } from './link';
 import { Card } from './card';
 
 export const PackageFileList = () => {
