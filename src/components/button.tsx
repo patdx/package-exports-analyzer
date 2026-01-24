@@ -8,7 +8,7 @@ export const Button: FC<
     <button
       type="button"
       className={clsx(
-        'rounded border bg-white p-1 hover:bg-gray-200 active:bg-gray-300',
+        'rounded-sm border bg-white p-1 hover:bg-gray-200 active:bg-gray-300',
         props.className
       )}
       onClick={props.onClick}

@@ -186,7 +186,7 @@ export const UsedConditions: FC<{
   return (
     <>
       <Card title="Selected conditions" className="flex flex-col gap-2">
-        <div className="rounded bg-yellow-100 p-1">
+        <div className="rounded-sm bg-yellow-100 p-1">
           <div>Presets</div>
           <div className="flex flex-wrap gap-2">
             {Object.entries(PRESETS).map(([key, value]) => (
@@ -217,7 +217,7 @@ export const UsedConditions: FC<{
                       ? 'bg-gray-200 hover:bg-gray-300 active:bg-gray-400'
                       : 'bg-gray-100 text-gray-500 line-through',
                     selected.selected.has(name) &&
-                      '!bg-blue-500 font-bold !text-white',
+                      'bg-blue-500! font-bold text-white!',
                   )}
                 >
                   {name}
@@ -232,7 +232,7 @@ export const UsedConditions: FC<{
             {warnings.map((warning) => (
               <div
                 key={warning}
-                className="rounded border border-red-600 bg-red-200 p-1"
+                className="rounded-sm border border-red-600 bg-red-200 p-1"
               >
                 {warning}
               </div>
