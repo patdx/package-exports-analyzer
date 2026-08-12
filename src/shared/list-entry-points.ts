@@ -26,7 +26,7 @@ export const listEntryPoints = (
 
   const { exports } = pkg;
 
-  if (exports) {
+  if (exports !== undefined) {
     const resolvedExports: ResolvedExportMap = new Map();
 
     traverseExports(exports, {
@@ -42,7 +42,7 @@ export const listEntryPoints = (
     result.exports = Object.fromEntries(resolvedExports);
   }
 
-  if (!exports) {
+  if (exports === undefined) {
     // In general, other conditions in package.json seem to be intended to
     // only be resolved when the `exports` map is not available.
     // This is documented very clearly for Typescript

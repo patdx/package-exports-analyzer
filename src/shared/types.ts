@@ -1,5 +1,6 @@
 export interface IPackageJson {
-  exports?: IPackageJsonExports;
+  exports?: IPackageJsonExportsNode;
+  main?: string;
   dependencies?: Record<string, string>;
   devDependencies?: Record<string, string>;
 }

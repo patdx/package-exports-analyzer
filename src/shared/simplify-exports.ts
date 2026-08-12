@@ -4,7 +4,7 @@
 // type ExportPath = string;
 
 import { simplify } from 'mathjs';
-import { IPackageJsonExports, IPackageJsonExportsNode } from './types';
+import { IPackageJsonExportsNode } from './types';
 
 const smplfy = (text: string) => {
   try {
@@ -57,7 +57,7 @@ interface TraverseContext {
   path: string;
 }
 
-export const simplifyExports = (exports?: IPackageJsonExports) => {
+export const simplifyExports = (exports?: IPackageJsonExportsNode) => {
   const output: Output = new Map();
 
   if (exports) {

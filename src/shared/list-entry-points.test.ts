@@ -26,6 +26,16 @@ describe('listEntryPoints', () => {
     expect(result.exports).toEqual({ './internal/*': null });
   });
 
+  it('treats a top-level null export as an explicit block', () => {
+    const result = listEntryPoints(
+      { exports: null, main: './legacy.js' },
+      new Set(['node']),
+    );
+
+    expect(result.exports).toEqual({ '.': null });
+    expect(result).not.toHaveProperty('main');
+  });
+
   it('continues through array alternatives that do not match', () => {
     const result = listEntryPoints({
       exports: [{ browser: './browser.js' }, { default: './index.js' }],
