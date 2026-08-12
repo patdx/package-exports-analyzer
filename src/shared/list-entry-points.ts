@@ -3,18 +3,18 @@
 // type ExportsList = Array<Export>;
 // type ExportPath = string;
 
-import { IPackageJson } from './types';
+import { IPackageJson, IPackageJsonExportsNode } from './types';
 import pick from 'lodash/pick';
 
-export type ResolvedExportMap = Map<string, string>;
+export type ResolvedExportMap = Map<string, string | null>;
 
 export type EntryPointResult = {
-  exports?: Record<string, string>;
-} & Record<string, any>;
+  exports?: Record<string, string | null>;
+} & Record<string, unknown>;
 
 export const listEntryPoints = (
   pkg?: IPackageJson,
-  conditions?: Set<string>
+  conditions?: Set<string>,
 ): EntryPointResult => {
   if (!pkg) {
     return {
@@ -91,23 +91,21 @@ interface TraverseContext {
 }
 
 const traverseExports = (
-  obj: string | Array<any> | Record<string, any>,
-  context: TraverseContext
+  obj: IPackageJson['exports'] | IPackageJsonExportsNode,
+  context: TraverseContext,
 ): void => {
-  if (typeof obj === 'string') {
+  if (obj === null || typeof obj === 'string') {
     if (context.resolvedExports.has(context.path)) {
-      console.log(`path ${context.path} already resolved, skipping ${obj}`);
       return;
     }
     context.resolvedExports.set(context.path, obj);
   } else if (Array.isArray(obj)) {
-    // for now, just use the first one
-    // since we do not actually check the existing files
-    // this could be a setting, "show fallbacks? T/F"
-    traverseExports(obj[0], context);
-    // for (const element of obj) {
-    //   traverseExports(element, conditionNames);
-    // }
+    // Try alternatives until one resolves. We cannot check whether string targets
+    // exist, so the first syntactically resolvable alternative wins.
+    for (const alternative of obj) {
+      traverseExports(alternative, context);
+      if (context.resolvedExports.has(context.path)) break;
+    }
   } else {
     // is object
     for (const [key, value] of Object.entries(obj ?? {})) {
@@ -119,7 +117,9 @@ const traverseExports = (
         });
       } else {
         // is a condition
-        if (context.conditions?.has(key)) {
+        // `default` is an unconditional fallback in package exports. It is not a
+        // user-defined condition and must work even when callers omit it.
+        if (key === 'default' || context.conditions?.has(key)) {
           traverseExports(value, context);
         } else if (
           context.conditions?.has('types') &&

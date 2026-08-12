@@ -81,6 +81,7 @@ const useSelectedConditions = create<SelectedConditions>((set, get) => ({
   preset: 'webpack',
   selected: new Set(PRESETS['webpack'].conditions),
   toggle: function (name) {
+    if (name === 'default') return;
     const selected = new Set(get().selected);
     if (selected.has(name)) {
       selected.delete(name);
@@ -177,12 +178,6 @@ export const UsedConditions: FC<{
 
   const warnings: string[] = [];
 
-  if (!selected.selected.has('default')) {
-    warnings.push(
-      `Deselecting 'default' may lead to strange results because this is the standard fallback condition.`,
-    );
-  }
-
   return (
     <>
       <Card title="Selected conditions" className="flex flex-col gap-2">
@@ -210,14 +205,24 @@ export const UsedConditions: FC<{
                 <button
                   key={name}
                   type="button"
+                  disabled={name === 'default'}
+                  aria-pressed={
+                    name === 'default' || selected.selected.has(name)
+                  }
+                  title={
+                    name === 'default'
+                      ? 'The default fallback is always active'
+                      : undefined
+                  }
                   onClick={() => selected.toggle(name)}
                   className={clsx(
                     'rounded-full p-1 transition',
                     group.used.includes(name)
                       ? 'bg-gray-200 hover:bg-gray-300 active:bg-gray-400'
                       : 'bg-gray-100 text-gray-500 line-through',
-                    selected.selected.has(name) &&
+                    (name === 'default' || selected.selected.has(name)) &&
                       'bg-blue-500! font-bold text-white!',
+                    name === 'default' && 'cursor-not-allowed',
                   )}
                 >
                   {name}

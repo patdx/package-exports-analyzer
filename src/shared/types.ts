@@ -8,6 +8,4 @@ export type IPackageJsonExports = {
   [key: string]: IPackageJsonExportsNode;
 };
 export type IPackageJsonExportsNode =
-  | string
-  | Array<IPackageJsonExportsNode>
-  | IPackageJsonExports;
+  string | null | Array<IPackageJsonExportsNode> | IPackageJsonExports;
